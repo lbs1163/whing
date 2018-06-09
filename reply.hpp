@@ -20,13 +20,11 @@ namespace whing {
 
             EOSLIB_SERIALIZE( reply, (reply_id)(article_id)(owner)(created)(data)(num_flaps) )
          };
-         
+
          typedef eosio::multi_index<N(replys), reply,
             indexed_by<N(by_article_id), const_mem_fun<reply, uint32_t, &reply::get_article_id>>,
             indexed_by<N(by_reply_id), const_mem_fun<reply, account_name, &reply::get_owner>>,
             > replys;
-
-
 
    };
 };
