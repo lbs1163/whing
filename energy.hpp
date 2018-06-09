@@ -33,16 +33,16 @@ namespace whing {
 
    energy::get_max_enr(account_name owner)const {
       enr_accounts enr_account_tbl(_self, owner);
-      const auto &ft = enr_account_tbl.get( owner );
+      const auto &et = enr_account_tbl.get( owner );
       
-      return ft.max_enr;
+      return et.max_enr;
    };
 
    energy::get_cur_enr(account_name owner)const {
       enr_accounts enr_account_tbl(_self, owner);
-      const auto &ft = enr_account_tbl.get( owner );
+      const auto &et = enr_account_tbl.get( owner );
       
-      return ft.cur_enr;
+      return et.cur_enr;
    };
 
 }
