@@ -6,25 +6,23 @@
 namespace whing {
 
   class level {
-    uint32_t num_of_boards;
+    account_name account;
+    uint32_t board_id; // pseudo-random
+    uint64_t total_exp; // Level = EXP / EXP_THRESHOLD
 
-    std::vector<board> board_list;
-    uint64_t primary_key(account_name acc) const { return board_list; }
+    uint32_t num_of_replies;
+    uint32_t num_of_articles;
+
+    uint64_t primary_key() const { return board_id; }
+    uint64_t secondary_key() const { return account; }
 
   public:
-
-    level():num_of_boards(0); // seed account needed
-
     // Setters
-    bool exp_up( account_name acc, uint32_t board_id, uint32_t increment ); // including level calculation
-    bool set_board( account_name acc, std::string _url, bool _isOwner );
-
-/*  EDIT FUNCTIONS ARE NOT COVERED AT HACKATHON */
-//  bool edit_url(  account_name acc, std::string _url, bool _isOwner );
+    bool update_total_exp();
 
     // Getters
-    std::vector<board> get_boards( account_name acc );
-            // specific getters would be set up at service side
+    uint64_t get_total_exp();
+    uint32_t get_level();
 
   }
 }
