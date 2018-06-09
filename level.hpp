@@ -1,23 +1,39 @@
 #pragma once
 #include <eosiolib/eosio.hpp>
 #define EXP_THRESHOLD 100 // Interval of experience to get level
-#define RATIO 0.1
 
 namespace whing {
 
-  struct website {
-    std::string  url = "none";
-    uint64_t     level = 0;
-    uint64_t     exp = 0;
+  struct board {
+    uint32_t     board_id; // starts from 0
+    std::string  url;
+    uint64_t     exp;
+    uint64_t     level; // level = exp/EXP_THRESHOLD
+    bool isOwner; // true = OWNED, false = JOINED
+
+    board(uint32_t _id, std::string _url, bool _isOwner)
+          : board_id(_id), url(_url), exp(0), level(0), isOwner(_isOwner) {}
+
   };
 
-  // levels can be calculated by certain threshold, EXP_THRESHOLD
   class level {
-    std::vector<website> website_list;
-    uint64_t primary_key(account_name acc) const { return website_list; }
+    uint32_t num_of_boards;
 
-    
+    std::vector<board> board_list;
+    uint64_t primary_key(account_name acc) const { return board_list; }
+
+  public:
+
+    level():num_of_boards(0); // seed account needed
+
+    // Setters
+    bool exp_up( account_name acc, uint32_t board_id ); // including level calculation
+    bool set_board( account_name acc, std::string _url, bool _isOwner );
+    bool add_new_acc();
+
+    // Getters
+
+
   }
-
 }
 // end of namespace whing
