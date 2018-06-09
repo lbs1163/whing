@@ -1,6 +1,6 @@
 #pragma once
 #include <eosiolib/eosio.hpp>
-#define RATIO 0.1
+#define FLAP_TO_WHING_RATIO 0.1
 
 namespace whing {
 
@@ -10,6 +10,5 @@ namespace whing {
 
 
   }
-
 }
 // end of namespace whing
