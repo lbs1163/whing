@@ -29,10 +29,14 @@ namespace whing {
     // Setters
     bool exp_up( account_name acc, uint32_t board_id ); // including level calculation
     bool set_board( account_name acc, std::string _url, bool _isOwner );
-    bool add_new_acc();
+
+// NOT COVERED AT HACKATHON
+//    bool edit_url(  account_name acc, std::string _url, bool _isOwner );
+//    bool add_new_acc(); // to be moved onto service
 
     // Getters
-
+    std::vector<board> get_boards( account_name acc );
+            // specific getters would be set up at service side
 
   }
 }
