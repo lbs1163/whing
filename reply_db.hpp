@@ -3,7 +3,12 @@
 #include <eosiolib/multi_index.hpp>
 
 namespace whing {
-   class reply_manager {
+   class reply_db {
+      public:
+         article get_reply_by_id(uint32_t id);
+         
+         owned_infos get_owned_infos(account_name owner);
+
 
       private:
          struct reply {
@@ -21,10 +26,15 @@ namespace whing {
             EOSLIB_SERIALIZE( reply, (reply_id)(article_id)(owner)(created)(data)(num_flaps) )
          };
 
-         typedef eosio::multi_index<N(replys), reply,
+         struct owned_infos {
+            uint64_t    total_claps = 0;
+            uint64_t    counts = 0;
+         };
+
+         typedef eosio::multi_index<N(replies), reply,
             indexed_by<N(by_article_id), const_mem_fun<reply, uint32_t, &reply::get_article_id>>,
-            indexed_by<N(by_reply_id), const_mem_fun<reply, account_name, &reply::get_owner>>,
-            > replys;
+            indexed_by<N(by_owner), const_mem_fun<reply, account_name, &reply::get_owner>>,
+            > replies;
 
    };
 };
