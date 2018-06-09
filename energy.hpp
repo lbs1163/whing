@@ -1,3 +1,5 @@
+#pragma once
+
 #include <eosiolib/eosio.hpp>
 #include <whing/level.hpp>
 #include <whing/flap.hpp>
