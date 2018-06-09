@@ -5,7 +5,15 @@
 namespace whing {
    class article_manager {
       public:
+         article get_article_by_id(uint32_t id);
          
+         owned_infos get_owned_infos(account_name owner);
+ 
+         struct owned_infos {
+            uint64_t    total_claps = 0;
+            uint64_t    counts = 0;
+            uint64_t    total_replies = 0;
+         };
 
       private:
          struct article {
@@ -21,13 +29,14 @@ namespace whing {
             uint64_t       num_replies;
 
             uint32_t primary_key() const { return article_id; }
-            uint32_t get_owner() const { return owner; }
+            account_name get_owner() const { return owner; }
 
          };
 
+
          
          typedef eosio::multi_index<N(articles), article,
-            indexed_by<N(by_owner), const_mem_fun<owner, account_name, &article::get_owner>>,
+            indexed_by<N(byowner), const_mem_fun<article, account_name, &article::get_owner>>,
             > articles;
 
 };
