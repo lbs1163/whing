@@ -3,7 +3,7 @@
 #include <eosiolib/multi_index.hpp>
 
 namespace whing {
-   class reply {
+   class reply_manager {
 
       private:
          struct reply {

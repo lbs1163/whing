@@ -3,8 +3,9 @@
 #include <eosiolib/multi_index.hpp>
 
 namespace whing {
-   class article {
+   class article_manager {
       public:
+         
 
       private:
          struct article {
