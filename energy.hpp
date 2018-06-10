@@ -1,10 +1,7 @@
 #pragma once
 
 #include <eosiolib/eosio.hpp>
-#include <whing/level.hpp>
-#include <whing/flap.hpp>
 #include <eosio.token/eosio.token.hpp>
-#include <eosiolib/asset.hpp>
 
 namespace whing {
    class energy {

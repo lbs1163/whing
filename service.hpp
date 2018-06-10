@@ -4,9 +4,9 @@
 #include <whing/level.hpp>
 #include <whing/energy.hpp>
 #include <whing/flap.hpp>
-#include <whing/board_db.hpp>
-#include <whing/article_db.hpp>
-#include <whing/reply_db.hpp>
+#include <whing/board.hpp>
+#include <whing/article.hpp>
+#include <whing/reply.hpp>
 
 namespace whing {
    class service : public eosio::contract {

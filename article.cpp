@@ -1,16 +1,15 @@
-#include <whing/article_db.cpp>
+#include <whing/article.hpp>
 
 namespace whing {
-
-   article article_db::get_article_by_id(uint32_t id) {
+   article get_article_by_id(uint32_t id) {
       articles articles_tbl(_self, id);
       const auto &at = articles_tbl.get( id );
 
       return at;
    };
 
-   owned_infos article_db::get_owned_infos(account_name owner) {
-      owned_infos oi;
+   owned_articles get_owned_articles(account_name owner) {
+      owned_articles oi;
 
       for( const auto& itr : articles.get_index<N(by_owner)>() ) {
          if (itr.owner == owner) { 
@@ -34,5 +33,4 @@ namespace whing {
    
       return vec_article;
    };
-
 };
