@@ -1,6 +1,6 @@
 #pragma once
 
-#include <eosiolib/multi_index.hpp>
+#include <eosiolib/eosio.hpp>
 
 namespace whing {
    class reply_db {
@@ -9,6 +9,7 @@ namespace whing {
          
          owned_infos get_owned_infos(account_name owner);
 
+         vector<reply> get_replies_by_article_id(uint32_t article_id);
 
       private:
          struct reply {
